@@ -3,23 +3,21 @@ package academy.devdojo;
 public class Aula06EstruturaCondicionais04 {
     public static void main(String[] args) {
         double salario = 70000;
-        String mensagem;
         double pagamento;
-        double resultado ;
         double pagode = salario;
 
         if (salario < 34712) {
-            pagamento = salario * 9.7 / 100;
-            resultado = pagode - pagamento;
-            System.out.println("Voce paga de livre de imposto " + resultado);
+            pagamento = (9.7 / 100) * salario;
+
+            System.out.println("Voce paga de livre de imposto " + pagamento);
         } else if (salario >= 34712 && salario < 68507) {
-            pagamento = salario * 37.35 / 100;
-            resultado = pagode - pagamento;
-            System.out.println("Voce paga de livre de imposto " + resultado);
+            pagamento =  (37.35 / 100) * salario ;
+
+            System.out.println("Voce paga de livre de imposto " + pagamento);
         } else {
-            pagamento = salario * 49.50 / 100;
-            resultado = pagode - pagamento;
-            System.out.println("Voce paga de livre de imposto " + resultado);
+            pagamento = (49.50 / 100) * salario;
+
+            System.out.println("Voce paga de livre de imposto " + pagamento);
         }
 
         double salarioAnual = 70000;
@@ -29,12 +27,12 @@ public class Aula06EstruturaCondicionais04 {
         double valorImposto;
         
         if (salarioAnual <= 34712){
-            salarioAnual = salarioAnual * primeiraFaixa;
+            valorImposto = salarioAnual * primeiraFaixa;
         } else if (salarioAnual >= 34713 && salarioAnual <= 68507 ) {
-            salarioAnual = salarioAnual * segundoFaixa;
+            valorImposto = salarioAnual * segundoFaixa;
         }else {
-            salarioAnual = salarioAnual * terceiroFaixa;
+            valorImposto = salarioAnual * terceiroFaixa;
         }
-        System.out.println("Seu salario livre de imposto "+salarioAnual);
+        System.out.println("Seu salario livre de imposto "+valorImposto);
     }
 }
