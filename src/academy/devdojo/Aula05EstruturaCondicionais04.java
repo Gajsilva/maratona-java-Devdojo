@@ -1,6 +1,6 @@
 package academy.devdojo;
 
-public class Aula06EstruturaCondicionais04 {
+public class Aula05EstruturaCondicionais04 {
     public static void main(String[] args) {
         double salario = 70000;
         double pagamento;
