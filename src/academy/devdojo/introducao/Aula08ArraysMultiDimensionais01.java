@@ -1,4 +1,4 @@
-package academy.devdojo;
+package academy.devdojo.introducao;
 
 public class Aula08ArraysMultiDimensionais01 {
     public static void main(String[] args) {

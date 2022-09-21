@@ -1,4 +1,4 @@
-package academy.devdojo;
+package academy.devdojo.introducao;
 /*
     Crie variaves para o campo descritos abaixo entre <> e imprima a seguinte
      mensagem:

@@ -1,4 +1,4 @@
-package academy.devdojo;
+package academy.devdojo.introducao;
 
 public class Aula05EstruturaCondicionais03 {
     public static void main(String[] args) {

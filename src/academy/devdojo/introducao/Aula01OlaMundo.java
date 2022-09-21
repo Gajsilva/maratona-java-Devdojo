@@ -1,4 +1,4 @@
-package academy.devdojo;
+package academy.devdojo.introducao;
 
 public class Aula01OlaMundo {
     // Isso é um comentario de uma linha
