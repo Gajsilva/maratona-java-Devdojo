@@ -1,11 +1,13 @@
 package academy.devdojo.javacore.IntroducaoMetodos.test;
 
 import academy.devdojo.javacore.IntroducaoMetodos.dominio.Estudante;
+import academy.devdojo.javacore.IntroducaoMetodos.dominio.ImpressoraEstudante;
 
 public class EstudanteTest01 {
     public static void main(String[] args) {
         Estudante estudante1 = new Estudante();
         Estudante estudante2 = new Estudante();
+        ImpressoraEstudante impressora = new ImpressoraEstudante();
 
         estudante1.nome = "jotaro";
         estudante1.idade = 20;
@@ -15,13 +17,11 @@ public class EstudanteTest01 {
         estudante2.idade = 17;
         estudante2.sexo = 'M';
 
-        System.out.println(estudante1.nome);
-        System.out.println(estudante1.idade);
-        System.out.println(estudante1.sexo);
+       impressora.Imprime(estudante1);
 
-        System.out.println("-------------------");
-        System.out.println(estudante2.nome);
-        System.out.println(estudante2.idade);
-        System.out.println(estudante2.sexo);
+       impressora.Imprime(estudante2);
+
+       impressora.Imprime(estudante1);
+       impressora.Imprime(estudante2);
     }
 }
