@@ -1,5 +1,7 @@
 package academy.devdojo.javacore.Gassociacao.dominio;
 
+import academy.devdojo.javacore.Gassociacao.ex.dominio.Professor;
+
 public class Escola {
     private String nome;
     private Professor[] professores;
@@ -17,6 +19,7 @@ public class Escola {
 
         for (Professor professor : professores) {
                 System.out.println(professor.getNome());
+                System.out.println(professor.getEspecialidadede());
         }
     }
 
