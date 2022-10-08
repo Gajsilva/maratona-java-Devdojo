@@ -6,7 +6,7 @@ import academy.devdojo.javacore.Gassociacao.ex.dominio.Seminario;
 
 public class SistemaTest01 {
     public static void main(String[] args) {
-        Estudante estudante1 = new Estudante("Naruto", 15);
+        Estudante estudante1 = new Estudante("Naruto", +15);
         Estudante estudante2 = new Estudante("Pain", 25);
 
         Professor professor = new Professor("Kakashi-senpai", "Ambu");
@@ -25,10 +25,16 @@ public class SistemaTest01 {
         estudante2.imprime();
 
         System.out.println("------------");
-        seminario.imprime();
+        seminario.imprime(estudante1);
 
         System.out.println("------------");
-        seminario1.imprime();
+        seminario1.imprime(estudante1);
+
+        System.out.println("------------");
+        seminario.imprime(estudante1);
+
+        System.out.println("------------");
+        seminario1.imprime(estudante2);
 
     }
 }

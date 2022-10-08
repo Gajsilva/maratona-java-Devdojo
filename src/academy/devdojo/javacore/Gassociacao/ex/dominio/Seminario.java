@@ -15,18 +15,24 @@ public class Seminario {
         this.nome = nome;
         this.local = local;
         this.professores = professores;
+
     }
 
-    public void imprime() {
+
+    public void imprime(Estudante estudante) {
         System.out.println(this.nome);
         System.out.println(this.local);
+        System.out.println(estudante.getNome());
+        System.out.println(estudante.getIdade());
         if (this.professores == null) return;
 
         for (Professor professor : this.professores){
             System.out.println(professor.getNome());
             System.out.println(professor.getEspecialidadede());
         }
+
     }
+
 
     public Professor[] getProfessores() {
         return professores;
