@@ -1,9 +1,30 @@
 package academy.devdojo.javacore.Heheranca.dominio;
 
 public class Pessoa {
-    private String nome;
-    private int cpf;
-    private Endereco endereco;
+    protected String nome;
+    protected String cpf;
+    protected Endereco endereco;
+    static {
+        System.out.println("Dentro do bloco de inicialização estatico de pessoa");
+    }
+
+    {
+        System.out.println("Dentro do bloco de inicialização de pessoa1");
+    }
+
+    {
+        System.out.println("Dentro do bloco de inicialização de pessoa2");
+    }
+
+    public Pessoa(String nome){
+        System.out.println("Dentro do construtor de pessoa");
+        this.nome = nome;
+    }
+
+    public Pessoa(String nome, String cpf){
+        this(nome);
+        this.cpf = cpf;
+    }
 
     public void imprime(){
         System.out.println(this.nome);
@@ -19,11 +40,11 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 

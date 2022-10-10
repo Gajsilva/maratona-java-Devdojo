@@ -19,8 +19,10 @@ public class Usuario {
     }
 
     public void pagar(double pagar){
-        double pagamento = this.saldo - pagar  ;
-        if (this.saldo < pagar){
+        double pagamento = this.saldo - pagar ;
+        if (pagar == 0 ){
+            System.out.println("Por favor digite um valor");
+        } else if (this.saldo < pagar){
             System.out.println("Saldo insuficiente para pagamento");
         }else {
             System.out.println("Pagamento feito com sucesso de "+pagar);
