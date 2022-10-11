@@ -18,17 +18,18 @@ public class Usuario {
         System.out.println("------------------------------------");
     }
 
-    public void pagar(double pagar){
+    public double pagar(double pagar){
         double pagamento = this.saldo - pagar ;
-        if (pagar == 0 ){
+        if (pagar == 0){
             System.out.println("Por favor digite um valor");
         } else if (this.saldo < pagar){
             System.out.println("Saldo insuficiente para pagamento");
+            System.out.println("------------------------------------");
         }else {
             System.out.println("Pagamento feito com sucesso de "+pagar);
             this.saldo = pagamento;
-        }
-        System.out.println("------------------------------------");
+            System.out.println("------------------------------------");
+        }return pagar;
     }
 
     public void depositar(double depositar){
