@@ -1,6 +1,6 @@
 package academy.devdojo.javacore.Lclassesabstratas.dominio;
 
-public abstract class Funcionario {
+public abstract class Funcionario extends Pessoa {
     protected String nome;
     protected double salario;
 
@@ -11,4 +11,16 @@ public abstract class Funcionario {
     }
      public abstract void calcularBonus();
 
+    @Override
+    public void imprime() {
+        System.out.println("Imprimindo...");
+    }
+
+    @Override
+    public String toString() {
+        return "Funcionario{" +
+                "nome='" + nome + '\'' +
+                ", salario=" + salario +
+                '}';
+    }
 }
