@@ -3,9 +3,9 @@ package academy.devdojo.ExercicioAbreu.dominio;
 public class Usuario {
     private String nome;
     private String conta;
-    private double saldo;
+    private float saldo;
 
-    public Usuario(String nome, String conta, double saldo) {
+    public Usuario(String nome, String conta, float saldo) {
         this.nome = nome;
         this.conta = conta;
         this.saldo = saldo;
@@ -18,7 +18,7 @@ public class Usuario {
         System.out.println("------------------------------------");
     }
 
-    public double pagar(double pagar){
+    public void pagar(double pagar){
         double pagamento = this.saldo - pagar ;
         if (pagar == 0){
             System.out.println("Por favor digite um valor");
@@ -27,27 +27,29 @@ public class Usuario {
             System.out.println("------------------------------------");
         }else {
             System.out.println("Pagamento feito com sucesso de "+pagar);
-            this.saldo = pagamento;
+            this.saldo = (float) pagamento;
             System.out.println("------------------------------------");
-        }return pagar;
+        }
     }
 
-    public void depositar(double depositar){
-        double deposito = this.saldo + depositar;
-        System.out.println("Deposito feito com sucesso creditado na sua conta: "+depositar);
-        this.saldo=deposito;
+    public void receberSalario(float receber){
+        float deposito = this.saldo + receber;
+        System.out.println("Deposito feito com sucesso creditado na sua conta: "+receber);
+        this.saldo= deposito;
         System.out.println("------------------------------------");
     }
-    public void transferir(double transferir){
-        double transferi = this.saldo - transferir;
+    public void transferir(float transferir){
+        float transferi = this.saldo - transferir;
         if (this.saldo < transferir){
             System.out.println("Saldo Insuficiente para transferencia");
         }else {
             System.out.println("Tranferencia feita com sucesso no valor de: "+transferir);
             this.saldo = transferi;
         }
+
         System.out.println("------------------------------------");
     }
+
     public void verSaldo(){
         System.out.println("Saldo atual da sua conta: "+this.saldo);
     }
@@ -56,7 +58,7 @@ public class Usuario {
         return saldo;
     }
 
-    public void setSaldo(double saldo) {
+    public void setSaldo(float saldo) {
         this.saldo = saldo;
     }
 
