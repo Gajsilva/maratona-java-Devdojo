@@ -1,4 +1,4 @@
-package academy.devdojo.javacore.Oexecetion.RuntimeFinally.test;
+package academy.devdojo.javacore.Oexecetion.runtime.test;
 
 public class RunTimeExceptionTest03 {
     public static void main(String[] args) {

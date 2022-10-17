@@ -1,6 +1,6 @@
 package academy.devdojo.javacore.Oexecetion.runtime.test;
 
-public class RunTimeExeptionTest02 {
+public class RunTimeExceptionTest02 {
     public static void main(String[] args) {
         try {
             divisao(1,0);
