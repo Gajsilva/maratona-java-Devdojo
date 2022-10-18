@@ -38,16 +38,20 @@ public class Usuario {
         this.saldo= deposito;
         System.out.println("------------------------------------");
     }
-    public void transferir(float transferir){
+    public float transferir(float transferir){
         float transferi = this.saldo - transferir;
         if (this.saldo < transferir){
             System.out.println("Saldo Insuficiente para transferencia");
-        }else {
-            System.out.println("Tranferencia feita com sucesso no valor de: "+transferir);
-            this.saldo = transferi;
         }
+        System.out.println("Tranferencia feita com sucesso no valor de: "+transferir);
+        return this.saldo = transferi;
 
-        System.out.println("------------------------------------");
+    }
+
+    public void transacoes(){
+       System.out.println(this.transferir(saldo));
+        System.out.println();
+        System.out.println();
     }
 
     public void verSaldo(){

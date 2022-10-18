@@ -11,9 +11,10 @@ public class SistemaTest01 {
 
         usuario.pagar( 456.9);
         usuario.receberSalario(5000);
-        usuario.transferir(3800);
+        usuario.transferir(1000);
 
-        usuario.verSaldo();
+
+        usuario.transacoes();
 
     }
 }
