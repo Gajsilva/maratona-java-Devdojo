@@ -13,7 +13,7 @@ public class SistemaTest01 {
         usuario.receberSalario(5000);
         usuario.transferir(1000);
 
-
+        usuario.verSaldo();
         usuario.transacoes();
 
     }
