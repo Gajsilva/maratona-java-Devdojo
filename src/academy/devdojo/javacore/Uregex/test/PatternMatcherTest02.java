@@ -23,8 +23,8 @@ public class PatternMatcherTest02 {
         System.out.println("indice: 0123456789");
         System.out.println("regex "+regex);
         System.out.println("Posições encontradas");
-        while (matcher.find()){
-            System.out.print(matcher.start()+" "+matcher.group()+"\n");
+        while (matcher.find()) {
+            System.out.print(matcher.start() + " " + matcher.group() + "\n");
         }
     }
 }
