@@ -15,6 +15,14 @@ class SmartphonMarcaComparator implements Comparator<Smartphone> {
     }
 }
 
+class MangaPrecoComparator implements Comparator<Manga>{
+
+    @Override
+    public int compare(Manga o1, Manga o2) {
+        return Double.compare(o1.getPreco(),o2.getPreco());
+    }
+}
+
 public class NavigableSetTest01 {
     public static void main(String[] args) {
         NavigableSet<Smartphone> set = new TreeSet<>(new SmartphonMarcaComparator());
@@ -22,15 +30,37 @@ public class NavigableSetTest01 {
         set.add(smartphone);
         System.out.println(set);
 
-        NavigableSet<Manga> mangas = new TreeSet<>();
+        NavigableSet<Manga> mangas = new TreeSet<>(new MangaPrecoComparator());
         mangas.add(new Manga(5L,"Attack on titan",20.9,5));
         mangas.add(new Manga(6L,"Sword art online Kirito",29.9,0));
         mangas.add(new Manga(2L,"Bersek",15.90,2));
-        mangas.add(new Manga(3L,"Pokemon Arc",35.9,3));
+        mangas.add(new Manga(3L,"Pokemon Arc",5.9,3));
         mangas.add(new Manga(4L,"Bleach 2022",39.9, 0));
         mangas.add(new Manga(4L,"Bleach 2022",39.9, 0));
-        for (Manga manga : mangas){
+        mangas.add(new Manga(4L,"Bleach 2022",35.9, 0));
+
+        //for (Manga manga : mangas.descendingSet()){
+       //     System.out.println(manga);
+       // }
+
+        for (Manga manga : mangas.descendingSet()){
             System.out.println(manga);
         }
+        System.out.println("-------------");
+        Manga bersek =new Manga(21L, "Bersek", 15.90, 2);
+        System.out.println(mangas.lower(bersek));
+        System.out.println(mangas.floor(bersek));
+        System.out.println(mangas.higher(bersek));
+        System.out.println(mangas.ceiling(bersek));
+
+        System.out.println(mangas.size());
+        System.out.println(mangas.pollFirst());
+        System.out.println(mangas.size());
+        System.out.println(mangas.pollLast());
+        // lower <
+        //floor <=
+        //higher >
+        //ceiling >=
+
     }
 }
