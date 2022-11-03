@@ -50,7 +50,7 @@ public class Usuario {
 
 
     public void transacoes(){
-       System.out.println();
+        System.out.println();
         System.out.println();
         System.out.println();
     }
@@ -83,3 +83,4 @@ public class Usuario {
         this.conta = conta;
     }
 }
+
