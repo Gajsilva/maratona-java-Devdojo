@@ -5,6 +5,10 @@ import java.util.function.Consumer;
 
 public class LambdaTest01 {
     public static void main(String[] args) {
+        List<String> strings = List.of("Naruto", "Dohedoro", "Edward", "Alphonse");
+        List<Integer> integers = List.of(1,2,3,4,5,6);
+        forEach(strings,(String s) -> System.out.println(s));
+        forEach(integers,(Integer i ) -> System.out.print(i));
 
     }
     private static <T> void forEach(List<T> list, Consumer<T> consumer){
