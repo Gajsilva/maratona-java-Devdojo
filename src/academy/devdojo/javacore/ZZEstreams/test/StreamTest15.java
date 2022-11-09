@@ -31,6 +31,12 @@ public class StreamTest15 {
         Map<Category, List<Promotion>> collect1 = lightNovels.stream()
                 .collect(groupingBy(LightNovel::getCategory, mapping(StreamTest15::getPromotion, Collectors.toList())));
         System.out.println(collect1);
+
+        Map<Category, LinkedHashSet<Promotion>> collect2 = lightNovels.stream()
+                .collect(groupingBy(LightNovel::getCategory,
+                        mapping(StreamTest15::getPromotion, toCollection(LinkedHashSet::new))));
+        System.out.println(collect2);
+
     }
 
     private static Promotion getPromotion(LightNovel ln){return ln.getPrice() < 6 ? UNDER_PROMOTION :NORMAL_PRICE;}
