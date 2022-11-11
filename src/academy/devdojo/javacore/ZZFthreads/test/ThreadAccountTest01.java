@@ -23,13 +23,31 @@ public class ThreadAccountTest01 implements Runnable {
         }
     }
 
-    private void withdrawal(int amount){
+    /* private void withdrawal(int amount){
         if (account.getBalance() >= amount ){
             System.out.println(getTheadName() + " esta indo sacar dinheiro");
             account.withDraw(amount);
+            try {
+                Thread.sleep(10000);
+            }catch (InterruptedException e){
+                e.printStackTrace();
+            }
             System.out.println(getTheadName() + " completou o saque, valor atual da conta "+account.getBalance());
         }else {
             System.out.println("Sem dinheiro para "+ getTheadName() + " efeturar o saque "+account.getBalance());
+        }
+    } */
+    private void withdrawal(int amount){
+        System.out.println(getTheadName()+ "####### Fora do synchronized");
+        synchronized (account) {
+            System.out.println("********* dentro do synchronized");
+            if (account.getBalance() >= amount) {
+                System.out.println(getTheadName() + " esta indo sacar dinheiro");
+                account.withDraw(amount);
+                System.out.println(getTheadName() + " completou o saque, valor atual da conta " + account.getBalance());
+            } else {
+                System.out.println("Sem dinheiro para " + getTheadName() + " efeturar o saque " + account.getBalance());
+            }
         }
     }
 
