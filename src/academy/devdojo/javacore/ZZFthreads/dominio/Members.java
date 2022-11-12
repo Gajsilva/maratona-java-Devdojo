@@ -29,7 +29,7 @@ public class Members {
         System.out.println(Thread.currentThread().getName()+ " checking if thread are emails");
         synchronized (this.emails){
             while (this.emails.size() == 0) {
-                if (!open) break;
+                if (!open) return null;
                 System.out.println(Thread.currentThread().getName()+ " Não tem email disponivel na lista, entrando em modo de espera");
                 this.emails.wait();
             }
@@ -38,6 +38,10 @@ public class Members {
     }
 
     public void close(){
-        System.out.println(Thread.currentThread().getName() + " ");
+        open = false;
+        synchronized (this.emails){
+            System.out.println(Thread.currentThread().getName() + " notiicando todo mundo que nao estamos pegando mais emails ");
+        }
+
     }
 }
