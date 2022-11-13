@@ -3,6 +3,7 @@ package academy.devdojo.javacore.ZZFthreads.dominio;
 import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
 
+
 public class Members {
     private final Queue<String> emails = new ArrayBlockingQueue<>(10);
     private boolean open = true;
@@ -42,6 +43,5 @@ public class Members {
         synchronized (this.emails){
             System.out.println(Thread.currentThread().getName() + " notiicando todo mundo que nao estamos pegando mais emails ");
         }
-
-    }
+}
 }

@@ -1,8 +1,10 @@
-package academy.devdojo.javacore.ZZFthreads.test;
+package academy.devdojo.javacore.ZZGconcorrencia.test;
 
 
-import academy.devdojo.javacore.ZZFthreads.dominio.Members;
-import academy.devdojo.javacore.ZZFthreads.services.EmailDeliveryService;
+
+
+import academy.devdojo.javacore.ZZGconcorrencia.dominio.Members;
+import academy.devdojo.javacore.ZZGconcorrencia.services.EmailDeliveryService;
 
 import javax.swing.*;
 
