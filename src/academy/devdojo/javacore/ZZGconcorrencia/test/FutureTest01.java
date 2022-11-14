@@ -5,14 +5,21 @@ import java.util.concurrent.*;
 public class FutureTest01 {
     public static void main(String[] args) throws ExecutionException, InterruptedException, TimeoutException {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
-        Future<Double> dollarRequest = executorService.submit(() ->{
-            TimeUnit.SECONDS.sleep(10);
+        Future<Double> dollarRequest = executorService.submit(() -> {
+            TimeUnit.SECONDS.sleep(5);
             return 4.35D;
         });
         System.out.println(doSomeThing());
-        Double dollarResponse = dollarRequest.get(3, TimeUnit.SECONDS);
-        System.out.println("Dollar "+dollarResponse);
-        executorService.shutdown();
+        Double dollarResponse = null;
+        try {
+            dollarResponse = dollarRequest.get(3, TimeUnit.SECONDS);
+        } catch (InterruptedException | ExecutionException | TimeoutException e) {
+            e.printStackTrace();
+        } finally {
+            executorService.shutdown();
+        }
+        System.out.println("Dollar " + dollarResponse);
+
     }
     private static long doSomeThing(){
         System.out.printf(Thread.currentThread().getName());
