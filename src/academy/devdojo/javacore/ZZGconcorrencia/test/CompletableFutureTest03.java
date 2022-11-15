@@ -33,6 +33,6 @@ public class CompletableFutureTest03 {
 
         System.out.println(prices);
         long end = System.currentTimeMillis();
-        System.out.printf("Time passed to searchPriuceSync %d%n", (end-start));
+        System.out.printf("Time passed to searchPriceSync %d%n", (end-start));
     }
 }
