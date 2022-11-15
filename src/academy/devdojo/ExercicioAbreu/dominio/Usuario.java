@@ -47,8 +47,7 @@ public class Usuario {
         }
         return this.saldo;
     }
-
-
+    
     public void transacoes(){
         System.out.println();
         System.out.println();
