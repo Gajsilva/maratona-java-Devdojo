@@ -12,10 +12,10 @@ public class AircraftSingleTonLazyTest01 {
         System.out.println(AirCraftSingletonLazy.getInstance());
         System.out.println(AirCraftSingletonLazy.getInstance());
 
-        Constructor<AirCraftSingletonLazy> constructors = AirCraftSingletonLazy.class.getDeclaredConstructors(String.class);
-        constructors.setAccessible(true);
-        AirCraftSingletonLazy airCraftSingletonLazy = constructors.newInstance("787-900");
-        System.out.println(airCraftSingletonLazy);
+      //  Constructor<AirCraftSingletonLazy> constructors = AirCraftSingletonLazy.class.getDeclaredConstructors();
+     //   constructors.setAccessible(true);
+     //   AirCraftSingletonLazy airCraftSingletonLazy = constructors.newInstance("787-900");
+     //   System.out.println(airCraftSingletonLazy);
     }
 
     private static void bookSeat(String seat){
