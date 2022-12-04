@@ -1,15 +1,16 @@
 package academy.devdojo.javacore.ZZjdbc.conn;
 
-import com.sun.jdi.connect.spi.Connection;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class ConnectionFactory {
     //java.sql = Connection, Statement , ResultSet, DriverManager
-
-    public Connection getConnection(){
-        String url;
-        String username;
-        String password;
-        return null;
+    public static Connection getConnection() throws SQLException {
+        String url = "jdbc:mysql://localhost:3306/anime_store";
+        String username = "root";
+        String password = "admin";
+        return DriverManager.getConnection(url, username, password);
     }
 
 }
