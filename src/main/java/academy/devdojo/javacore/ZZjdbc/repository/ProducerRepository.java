@@ -2,7 +2,6 @@ package academy.devdojo.javacore.ZZjdbc.repository;
 
 import academy.devdojo.javacore.ZZjdbc.conn.ConnectionFactory;
 import academy.devdojo.javacore.ZZjdbc.dominio.Producer;
-import lombok.extern.log4j.Log4j2;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -14,8 +13,31 @@ public class ProducerRepository {
         try(Connection conn= ConnectionFactory.getConnection();
             Statement smt = conn.createStatement()) {
             int rowsAffected = smt.executeUpdate(sql);
-            System.out.println(rowsAffected);
+            System.out.println("Inserted producer "+producer.getName()+" in the database, rows affected "+rowsAffected);
         }catch (SQLException e){
+            System.out.println("Error while trying to insert producer "+ producer.getName());
+            e.printStackTrace();
+        }
+    }
+    public static void delete (int id){
+        String sql = "DELETE FROM anime_store . producer WHERE ( id = '%d' );".formatted(id);
+        try(Connection conn= ConnectionFactory.getConnection();
+            Statement smt = conn.createStatement()) {
+            int rowsAffected = smt.executeUpdate(sql);
+            System.out.println("Deleted producer "+id+" in the database, rows affected "+rowsAffected);
+        }catch (SQLException e){
+            System.out.println("Error while trying to delete producer "+ id);
+            e.printStackTrace();
+        }
+    }
+    public static void deleteTodos (){
+        String sql = "DELETE FROM anime_store . producer ;";
+        try(Connection conn= ConnectionFactory.getConnection();
+            Statement smt = conn.createStatement()) {
+            int rowsAffected = smt.executeUpdate(sql);
+            System.out.println("Deleted all producer in the database, rows affected "+rowsAffected);
+        }catch (SQLException e){
+            System.out.println("Error while trying to delete producer");
             e.printStackTrace();
         }
     }
