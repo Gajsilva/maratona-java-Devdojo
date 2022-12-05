@@ -2,6 +2,7 @@ package academy.devdojo.javacore.ZZjdbc.repository;
 
 import academy.devdojo.javacore.ZZjdbc.conn.ConnectionFactory;
 import academy.devdojo.javacore.ZZjdbc.dominio.Producer;
+import lombok.extern.log4j.Log4j2;
 
 import java.sql.Connection;
 import java.sql.SQLException;
