@@ -8,9 +8,11 @@ import academy.devdojo.javacore.ZZjdbc.service.ProducerService;
 public class ConnectionFactoryTest {
     public static void main(String[] args) {
         Producer producer = Producer.ProducerBuilder.builder().name("Kakaroto").build();
+        Producer producerToUpdate = Producer.ProducerBuilder.builder().id(8).name("Ichigo").build();
 
-      //  ProducerService.save(producer);
+       // ProducerService.save(producer);
       //  ProducerService.delete(4);
-        ProducerService.deleteTodos();
+      //  ProducerService.deleteTodos();
+       ProducerService.update(producerToUpdate);
     }
 }
