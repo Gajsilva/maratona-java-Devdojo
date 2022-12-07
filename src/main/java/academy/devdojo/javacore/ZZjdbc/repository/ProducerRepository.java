@@ -4,8 +4,11 @@ import academy.devdojo.javacore.ZZjdbc.conn.ConnectionFactory;
 import academy.devdojo.javacore.ZZjdbc.dominio.Producer;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProducerRepository {
     public static void save (Producer producer){
@@ -53,5 +56,23 @@ public class ProducerRepository {
             System.out.println("Error while trying to delete producer "+ producer.getId());
             e.printStackTrace();
         }
+    }
+    public static List<Producer> findAll(){
+        System.out.println("Finding all Producers");
+        String sql = "SELECT id, name FROM anime_store.producer";
+        List<Producer> producers = new ArrayList<>();
+        try (Connection conn = ConnectionFactory.getConnection();
+             Statement smtm = conn.createStatement();
+             ResultSet rs = smtm.executeQuery(sql); ) {
+            while(rs.next()){
+                var id = rs.getInt("id");
+                var name = rs.getString("name");
+                Producer producer = Producer.ProducerBuilder.builder().id(id).name(name).build();
+                producers.add(producer);
+            }
+        }catch (SQLException e){
+            System.out.println("Error while trying to find All producers "+e);
+        }
+        return producers;
     }
 }

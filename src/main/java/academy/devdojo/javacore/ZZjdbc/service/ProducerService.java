@@ -1,7 +1,15 @@
 package academy.devdojo.javacore.ZZjdbc.service;
 
+import academy.devdojo.javacore.ZZjdbc.conn.ConnectionFactory;
 import academy.devdojo.javacore.ZZjdbc.dominio.Producer;
 import academy.devdojo.javacore.ZZjdbc.repository.ProducerRepository;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProducerService {
     public static void save(Producer producer){
@@ -18,10 +26,12 @@ public class ProducerService {
         requireValidId(producer.getId());
         ProducerRepository.update(producer);
     }
-
     private static void requireValidId(Integer id){
         if (id == null || id <= 0){
             throw new IllegalArgumentException("Invalid value or id");
         }
+    }
+    public static List <Producer> findAll(){
+        return ProducerRepository.findAll();
     }
 }
