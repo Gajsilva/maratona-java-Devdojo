@@ -3,10 +3,7 @@ package academy.devdojo.javacore.ZZjdbc.repository;
 import academy.devdojo.javacore.ZZjdbc.conn.ConnectionFactory;
 import academy.devdojo.javacore.ZZjdbc.dominio.Producer;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -98,5 +95,25 @@ public class ProducerRepository {
             System.out.println("Error while trying to find All producers "+e);
         }
         return producers;
+    }
+    public static void showProducerMetadata(){
+        System.out.println("Showing Producer Metadata");
+        String sql = "SELECT * FROM anime_store.producer";
+        try(Connection conn = ConnectionFactory.getConnection();
+            Statement smtm = conn.createStatement();
+            ResultSet rs = smtm.executeQuery(sql)) {
+            ResultSetMetaData rsMetaData = rs.getMetaData();
+            rs.next();
+            int columnCount = rsMetaData.getColumnCount();
+            System.out.println("Columns cout "+columnCount);
+            for (int i = 1; i < columnCount; i++) {
+                System.out.println("Table name "+rsMetaData.getTableName(i));
+                System.out.println("Column name "+rsMetaData.getColumnName(i));
+                System.out.println("Column size "+rsMetaData.getColumnDisplaySize(i));
+                System.out.println("Column type "+rsMetaData.getColumnTypeName(i));
+            }
+        }catch (SQLException e){
+            System.out.println("Error wwhile trying to find all producers"+e);
+        }
     }
 }
