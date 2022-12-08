@@ -74,9 +74,12 @@ public class ProducerRepository {
             System.out.println("Error while trying to find All producers "+e);
         }
         return producers;
+    }public static List<Producer> findAllOtmized(){
+        System.out.println("Finding all Producers");
+        return finByName("");
     }
     public static List<Producer> finByName(String name){
-        System.out.println("Finding all Producers");
+        System.out.println("Finding all ByName");
         String sql = "SELECT * FROM anime_store.producer where name like '%s';".formatted("%"+name+"%");
         List<Producer> producers = new ArrayList<>();
         try (Connection conn = ConnectionFactory.getConnection();
