@@ -113,7 +113,7 @@ public class ProducerRepository {
                 System.out.println("Column type "+rsMetaData.getColumnTypeName(i));
             }
         }catch (SQLException e){
-            System.out.println("Error wwhile trying to find all producers"+e);
+            System.out.println("Error while trying to find all producers"+e);
         }
     }
 }
