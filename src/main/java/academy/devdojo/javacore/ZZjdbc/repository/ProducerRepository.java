@@ -116,4 +116,57 @@ public class ProducerRepository {
             System.out.println("Error while trying to find all producers"+e);
         }
     }
+    public static void showDriverMetadata(){
+        System.out.println("Showing Producer Metadata");
+        String sql = "SELECT * FROM anime_store.producer";
+        try(Connection conn = ConnectionFactory.getConnection()){
+            DatabaseMetaData dbmetaData = conn.getMetaData();
+            if (dbmetaData.supportsResultSetType(ResultSet.TYPE_FORWARD_ONLY)){
+                System.out.println("Supports TYPE_FORWARD_ONLY");
+                if (dbmetaData.supportsResultSetConcurrency(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE)){
+                    System.out.println("And Supports CONCUR_UPDATABLE");
+                }
+            }
+            if (dbmetaData.supportsResultSetType(ResultSet.TYPE_SCROLL_INSENSITIVE)){
+                System.out.println("Supports TYPE_SCROLL_INSENSITIVE");
+                if (dbmetaData.supportsResultSetConcurrency(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)){
+                    System.out.println("And Supports CONCUR_UPDATABLE");
+                }
+            }
+            if (dbmetaData.supportsResultSetType(ResultSet.TYPE_SCROLL_SENSITIVE)){
+                System.out.println("Supports TYPE_SCROLL_SENSITIVE");
+                if (dbmetaData.supportsResultSetConcurrency(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE)){
+                    System.out.println("And Supports CONCUR_UPDATABLE");
+                }
+            }
+        }catch (SQLException e){
+            System.out.println("Error while trying to find all producers"+e);
+        }
+    }
+    public static void showTypeScrollWorking(){
+        String sql = "SELECT * FROM anime_store.producer;";
+
+        try (Connection conn = ConnectionFactory.getConnection();
+             Statement smtm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+             ResultSet rs = smtm.executeQuery(sql); ) {
+            System.out.println("Last row "+rs.last());
+            System.out.println("Row Number "+rs.getRow());
+            System.out.println(Producer.ProducerBuilder.builder().id(rs.getInt("id")).name(rs.getString("name")).build());
+
+            System.out.println("First row "+rs.first());
+            System.out.println("Row Number "+rs.getRow());
+            System.out.println(Producer.ProducerBuilder.builder().id(rs.getInt("id")).name(rs.getString("name")).build());
+
+            System.out.println("Last row "+rs.absolute(3));
+            System.out.println("Row Number "+rs.getRow());
+            System.out.println(Producer.ProducerBuilder.builder().id(rs.getInt("id")).name(rs.getString("name")).build());
+
+            System.out.println("Last relative "+rs.relative(-2));
+            System.out.println("Row Number "+rs.getRow());
+            System.out.println(Producer.ProducerBuilder.builder().id(rs.getInt("id")).name(rs.getString("name")).build());
+        }catch (SQLException e){
+            System.out.println("Error while trying to find All producers "+e);
+        }
+
+    }
 }

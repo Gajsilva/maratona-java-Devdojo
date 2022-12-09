@@ -35,6 +35,8 @@ public class ProducerService {
         return ProducerRepository.findAll();
     }
     public static void showProducerMetadata(){ProducerRepository.showProducerMetadata();}
+    public static void showDriverMetadata(){ProducerRepository.showDriverMetadata();}
+    public static void showTypeScrollWorking(){ProducerRepository.showTypeScrollWorking();}
     public static List <Producer> findByName(String name){
         return ProducerRepository.finByName(name);
     }

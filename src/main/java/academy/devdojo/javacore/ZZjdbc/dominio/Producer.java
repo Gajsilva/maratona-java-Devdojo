@@ -5,14 +5,11 @@ import java.util.Objects;
 public class Producer {
     private Integer id;
     private String name;
-
-
     public static final class ProducerBuilder {
         private Integer id;
         private String name;
 
         private ProducerBuilder() {
-
         }
 
         public static ProducerBuilder builder() {
@@ -36,7 +33,6 @@ public class Producer {
             return producer;
         }
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
