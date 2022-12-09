@@ -34,6 +34,9 @@ public class ProducerService {
     public static List <Producer> findAll(){
         return ProducerRepository.findAll();
     }
+    public static List <Producer> findByNameToUpercase(String name){
+        return ProducerRepository.findByUpdateUpercase(name);
+    }
     public static void showProducerMetadata(){ProducerRepository.showProducerMetadata();}
     public static void showDriverMetadata(){ProducerRepository.showDriverMetadata();}
     public static void showTypeScrollWorking(){ProducerRepository.showTypeScrollWorking();}

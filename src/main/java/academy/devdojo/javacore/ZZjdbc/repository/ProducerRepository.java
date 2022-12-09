@@ -164,9 +164,32 @@ public class ProducerRepository {
             System.out.println("Last relative "+rs.relative(-2));
             System.out.println("Row Number "+rs.getRow());
             System.out.println(Producer.ProducerBuilder.builder().id(rs.getInt("id")).name(rs.getString("name")).build());
+
         }catch (SQLException e){
             System.out.println("Error while trying to find All producers "+e);
         }
 
+    }
+    public static List<Producer> findByUpdateUpercase(String name){
+        System.out.println("Finding all ByName");
+        String sql = "SELECT * FROM anime_store.producer where name like '%s';".formatted("%"+name+"%");
+        List<Producer> producers = new ArrayList<>();
+        try (Connection conn = ConnectionFactory.getConnection();
+             Statement smtm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+             ResultSet rs = smtm.executeQuery(sql); ) {
+            while(rs.next()){
+                rs.updateString("name", rs.getString("name").toUpperCase());
+                Producer producer = Producer
+                        .ProducerBuilder
+                        .builder()
+                        .id(rs.getInt("id"))
+                        .name(rs.getString("name"))
+                        .build();
+                producers.add(producer);
+            }
+        }catch (SQLException e){
+            System.out.println("Error while trying to find All producers update "+e);
+        }
+        return producers;
     }
 }

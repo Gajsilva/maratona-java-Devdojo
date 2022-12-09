@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ConnectionFactoryTest {
     public static void main(String[] args) {
-        Producer producer = Producer.ProducerBuilder.builder().name("Kakaroto").build();
+        Producer producer = Producer.ProducerBuilder.builder().name("Studio deen").build();
         Producer producerToUpdate = Producer.ProducerBuilder.builder().id(8).name("Ichigo").build();
 
        // ProducerService.save(producer);
@@ -21,6 +21,8 @@ public class ConnectionFactoryTest {
       //  System.out.println("Producers found "+producers);
        // ProducerService.showProducerMetadata();
        // ProducerService.showDriverMetadata();
-        ProducerService.showTypeScrollWorking();
+       // ProducerService.showTypeScrollWorking();
+        List<Producer> producersFindy = ProducerService.findByNameToUpercase("deen");
+        System.out.println("Producers found: "+producersFindy);
     }
 }
