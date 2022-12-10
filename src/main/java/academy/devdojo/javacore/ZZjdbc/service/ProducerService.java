@@ -43,4 +43,10 @@ public class ProducerService {
     public static List <Producer> findByName(String name){
         return ProducerRepository.finByName(name);
     }
+    public static List <Producer> finByNamePreparedStatementComSQLINJECTION(String name){
+        return ProducerRepository.finByNamePreparedStatementComSQLINJECTION(name);
+    }
+    public static List<Producer> finByNamePreparedStatement(String name) {
+        return ProducerRepository.finByNamePreparedStatement(name);
+    }
 }

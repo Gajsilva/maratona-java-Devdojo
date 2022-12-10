@@ -96,6 +96,54 @@ public class ProducerRepository {
         }
         return producers;
     }
+    public static List<Producer> finByNamePreparedStatementComSQLINJECTION(String name){
+        System.out.println("Finding all ByName");
+        String sql = "SELECT * FROM anime_store.producer where name like '%s';".formatted("%"+name+"%");
+        List<Producer> producers = new ArrayList<>();
+        try (Connection conn = ConnectionFactory.getConnection();
+             Statement smtm = conn.createStatement();
+             ResultSet rs = smtm.executeQuery(sql); ) {
+            while(rs.next()){
+                Producer producer = Producer
+                        .ProducerBuilder
+                        .builder()
+                        .id(rs.getInt("id"))
+                        .name(rs.getString("name"))
+                        .build();
+                producers.add(producer);
+            }
+        }catch (SQLException e){
+            System.out.println("Error while trying to find All producers "+e);
+        }
+        return producers;
+    }
+    public static List<Producer> finByNamePreparedStatement(String name){
+        System.out.println("Finding all ByName");
+        String sql = "SELECT * FROM anime_store.producer where name like ?;";
+        List<Producer> producers = new ArrayList<>();
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement ps = createdPreparedStatement(conn,sql,name);
+             ResultSet rs = ps.executeQuery();){
+
+            while(rs.next()){
+                Producer producer = Producer
+                        .ProducerBuilder
+                        .builder()
+                        .id(rs.getInt("id"))
+                        .name(rs.getString("name"))
+                        .build();
+                producers.add(producer);
+            }
+        }catch (SQLException e){
+            System.out.println("Error while trying to find All producers "+e);
+        }
+        return producers;
+    }
+    private static PreparedStatement createdPreparedStatement(Connection conn, String sql, String name) throws SQLException {
+        PreparedStatement preparedStatement = conn.prepareStatement(sql);
+        preparedStatement.setString(1, name);
+        return preparedStatement;
+    }
     public static void showProducerMetadata(){
         System.out.println("Showing Producer Metadata");
         String sql = "SELECT * FROM anime_store.producer";

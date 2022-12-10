@@ -25,6 +25,9 @@ public class ConnectionFactoryTest {
        // List<Producer> producersFindy = ProducerService.findByNameToUpercase("deen");
        // List<Producer> producersFindy = ProducerService.findByAndInsetWhenNotFound("A-1 pictures");
       //  System.out.println("Producers found: "+producersFindy);
-        ProducerService.findByAndDelete("kakaroto");
+      //  ProducerService.findByAndDelete("kakaroto");
+      //  List<Producer> producers = ProducerService.finByNamePreparedStatementComSQLINJECTION("B or X'='X"); // SQL INJECTION
+        List<Producer> producers = ProducerService.finByNamePreparedStatement("Bones");
+        System.out.println(producers);
     }
 }
