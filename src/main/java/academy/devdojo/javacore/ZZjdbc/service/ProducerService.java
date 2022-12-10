@@ -1,14 +1,8 @@
 package academy.devdojo.javacore.ZZjdbc.service;
 
-import academy.devdojo.javacore.ZZjdbc.conn.ConnectionFactory;
 import academy.devdojo.javacore.ZZjdbc.dominio.Producer;
 import academy.devdojo.javacore.ZZjdbc.repository.ProducerRepository;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProducerService {
@@ -36,6 +30,12 @@ public class ProducerService {
     }
     public static List <Producer> findByNameToUpercase(String name){
         return ProducerRepository.findByUpdateUpercase(name);
+    }
+    public static List<Producer> findByAndInsetWhenNotFound (String name){
+        return ProducerRepository.findByAndInsetWhenNotFound(name);
+    }
+    public static void findByAndDelete (String name){
+        ProducerRepository.findByAndDelete(name);
     }
     public static void showProducerMetadata(){ProducerRepository.showProducerMetadata();}
     public static void showDriverMetadata(){ProducerRepository.showDriverMetadata();}

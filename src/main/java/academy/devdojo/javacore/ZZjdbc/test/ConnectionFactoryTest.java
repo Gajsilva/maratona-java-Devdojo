@@ -22,7 +22,9 @@ public class ConnectionFactoryTest {
        // ProducerService.showProducerMetadata();
        // ProducerService.showDriverMetadata();
        // ProducerService.showTypeScrollWorking();
-        List<Producer> producersFindy = ProducerService.findByNameToUpercase("deen");
-        System.out.println("Producers found: "+producersFindy);
+       // List<Producer> producersFindy = ProducerService.findByNameToUpercase("deen");
+       // List<Producer> producersFindy = ProducerService.findByAndInsetWhenNotFound("A-1 pictures");
+      //  System.out.println("Producers found: "+producersFindy);
+        ProducerService.findByAndDelete("kakaroto");
     }
 }

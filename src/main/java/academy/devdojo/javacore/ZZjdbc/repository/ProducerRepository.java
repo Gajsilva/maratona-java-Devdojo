@@ -192,4 +192,46 @@ public class ProducerRepository {
         }
         return producers;
     }
+    public static List<Producer> findByAndInsetWhenNotFound(String name){
+        System.out.println("Finding all ByName");
+        String sql = "SELECT * FROM anime_store.producer where name like '%s';".formatted("%"+name+"%");
+        List<Producer> producers = new ArrayList<>();
+        try (Connection conn = ConnectionFactory.getConnection();
+             Statement smtm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+             ResultSet rs = smtm.executeQuery(sql); ) {
+            if (!rs.next()) return producers;
+                rs.moveToInsertRow();
+                rs.updateString("name", name);
+                rs.insertRow();
+            producers.add(getProducer(rs));
+
+        }catch (SQLException e){
+            System.out.println("Error while trying to find All producers update "+e);
+        }
+        return producers;
+    }
+    public static List<Producer> findByAndDelete(String name){
+        System.out.println("Finding all ByName");
+        String sql = "SELECT * FROM anime_store.producer where name like '%s';".formatted("%"+name+"%");
+        List<Producer> producers = new ArrayList<>();
+        try (Connection conn = ConnectionFactory.getConnection();
+             Statement smtm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+             ResultSet rs = smtm.executeQuery(sql); ) {
+            while(rs.next()){
+                System.out.println("Deleting"+rs.getString("name"));
+                rs.deleteRow();
+            }
+
+        }catch (SQLException e){
+            System.out.println("Error while trying to find All producers update "+e);
+        }
+        return producers;
+    }
+
+    private static Producer getProducer(ResultSet rs) throws SQLException {
+        rs.beforeFirst();
+        rs.next();
+       return Producer.ProducerBuilder.builder().id(rs.getInt("id")).name(rs.getString("name")).build();
+
+    }
 }
