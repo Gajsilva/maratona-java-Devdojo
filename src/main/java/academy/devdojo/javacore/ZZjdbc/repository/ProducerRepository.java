@@ -55,18 +55,16 @@ public class ProducerRepository {
         }
     }
     public static void updatePreparedStatement (Producer producer){
-        String sql = "UPDATE anime_store . producer SET name = '%s' WHERE ( id = '%d' );"
-                .formatted(producer.getName(), producer.getId());
         try(Connection conn= ConnectionFactory.getConnection();
-            Statement smt = conn.createStatement()) {
-            int rowsAffected = smt.executeUpdate(sql);
+            PreparedStatement ps = preparedStatementUpdate(conn, producer)) {
+            int rowsAffected = ps.executeUpdate();
             System.out.println("Update producer "+producer.getId()+" in the database, rows affected "+rowsAffected);
         }catch (SQLException e){
             System.out.println("Error while trying to delete producer "+ producer.getId());
             e.printStackTrace();
         }
     }
-    public static List<Producer> findAll(){
+    public static List<Producer> findAll() {
         System.out.println("Finding all Producers");
         String sql = "SELECT id, name FROM anime_store.producer";
         List<Producer> producers = new ArrayList<>();
@@ -83,9 +81,17 @@ public class ProducerRepository {
             System.out.println("Error while trying to find All producers "+e);
         }
         return producers;
-    }public static List<Producer> findAllOtmized(){
+    }
+    public static List<Producer> findAllOtmized(){
         System.out.println("Finding all Producers");
         return finByName("");
+    }
+    private static PreparedStatement preparedStatementUpdate(Connection conn,Producer producer) throws SQLException {
+        String sql = "UPDATE anime_store . producer SET name = ? WHERE ( id = ? );";
+        PreparedStatement preparedStatement = conn.prepareStatement(sql);
+        preparedStatement.setString(1, producer.getName());
+        preparedStatement.setInt(2, producer.getId());
+        return preparedStatement;
     }
     public static List<Producer> finByName(String name){
         System.out.println("Finding all ByName");

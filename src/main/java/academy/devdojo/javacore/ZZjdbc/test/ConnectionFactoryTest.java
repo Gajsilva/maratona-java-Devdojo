@@ -10,7 +10,7 @@ import java.util.List;
 public class ConnectionFactoryTest {
     public static void main(String[] args) {
         Producer producer = Producer.ProducerBuilder.builder().name("Studio deen").build();
-        Producer producerToUpdate = Producer.ProducerBuilder.builder().id(8).name("Ichigo").build();
+        Producer producerToUpdate = Producer.ProducerBuilder.builder().id(8).name("madhouse").build();
 
        // ProducerService.save(producer);
       //  ProducerService.delete(4);
@@ -27,7 +27,8 @@ public class ConnectionFactoryTest {
       //  System.out.println("Producers found: "+producersFindy);
       //  ProducerService.findByAndDelete("kakaroto");
       //  List<Producer> producers = ProducerService.finByNamePreparedStatementComSQLINJECTION("B or X'='X"); // SQL INJECTION
-        List<Producer> producers = ProducerService.finByNamePreparedStatement("Bones");
-        System.out.println(producers);
+      //  List<Producer> producers = ProducerService.finByNamePreparedStatement("Bones");
+      //  System.out.println(producers);
+        ProducerService.updatePreparedStatement(producerToUpdate);
     }
 }

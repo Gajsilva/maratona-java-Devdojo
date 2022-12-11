@@ -20,6 +20,10 @@ public class ProducerService {
         requireValidId(producer.getId());
         ProducerRepository.update(producer);
     }
+    public static void updatePreparedStatement(Producer producer){
+        requireValidId(producer.getId());
+        ProducerRepository.updatePreparedStatement(producer);
+    }
     private static void requireValidId(Integer id){
         if (id == null || id <= 0){
             throw new IllegalArgumentException("Invalid value or id");
