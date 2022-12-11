@@ -294,7 +294,34 @@ public class ProducerRepository {
         }
         return producers;
     }
+    public static List<Producer> finByNameCallableStatement(String name){
+        System.out.println("Finding all ByName");
 
+        List<Producer> producers = new ArrayList<>();
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement ps = callableStatementFindByName(conn,name);
+             ResultSet rs = ps.executeQuery();){
+
+            while(rs.next()){
+                Producer producer = Producer
+                        .ProducerBuilder
+                        .builder()
+                        .id(rs.getInt("id"))
+                        .name(rs.getString("name"))
+                        .build();
+                producers.add(producer);
+            }
+        }catch (SQLException e){
+            System.out.println("Error while trying to find All producers "+e);
+        }
+        return producers;
+    }
+    private static CallableStatement callableStatementFindByName(Connection conn, String name) throws SQLException {
+        String sql = "CALL anime_store . sp_get_producer_by_name (?);";
+        CallableStatement cs = conn.prepareCall(sql);
+        cs.setString(1, String.format("%%%s%%", name));
+        return cs;
+    }
     private static Producer getProducer(ResultSet rs) throws SQLException {
         rs.beforeFirst();
         rs.next();

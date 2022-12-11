@@ -53,4 +53,7 @@ public class ProducerService {
     public static List<Producer> finByNamePreparedStatement(String name) {
         return ProducerRepository.finByNamePreparedStatement(name);
     }
+    public static List<Producer> finByNameCallableStatement(String name) {
+        return ProducerRepository.finByNameCallableStatement(name);
+    }
 }

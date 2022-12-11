@@ -1,8 +1,7 @@
 package academy.devdojo.javacore.ZZjdbc.test;
 
-import academy.devdojo.javacore.ZZjdbc.conn.ConnectionFactory;
+
 import academy.devdojo.javacore.ZZjdbc.dominio.Producer;
-import academy.devdojo.javacore.ZZjdbc.repository.ProducerRepository;
 import academy.devdojo.javacore.ZZjdbc.service.ProducerService;
 
 import java.util.List;
@@ -29,6 +28,8 @@ public class ConnectionFactoryTest {
       //  List<Producer> producers = ProducerService.finByNamePreparedStatementComSQLINJECTION("B or X'='X"); // SQL INJECTION
       //  List<Producer> producers = ProducerService.finByNamePreparedStatement("Bones");
       //  System.out.println(producers);
-        ProducerService.updatePreparedStatement(producerToUpdate);
+       // ProducerService.updatePreparedStatement(producerToUpdate);
+        List<Producer> producers = ProducerService.finByNameCallableStatement("Bo");
+        System.out.println(producers);
     }
 }
