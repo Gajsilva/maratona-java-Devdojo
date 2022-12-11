@@ -328,4 +328,25 @@ public class ProducerRepository {
        return Producer.ProducerBuilder.builder().id(rs.getInt("id")).name(rs.getString("name")).build();
 
     }
+    public static void saveTransection(List<Producer> producers){
+        try (Connection conn = ConnectionFactory.getConnection()){
+            conn.setAutoCommit(false);
+           preparedStatementSaveUpdate(conn, producers);
+           conn.commit();
+        }catch (SQLException e){
+            System.out.println("Error while trying to update " +producers+ e);
+        }
+    }
+    private static void preparedStatementSaveUpdate(Connection conn,List<Producer> producers) throws SQLException {
+        String sql = "INSERT INTO anime_store . producer ( name ) VALUES ( ? );";
+        for (Producer p: producers){
+            try(PreparedStatement preparedStatement = conn.prepareStatement(sql);){
+                System.out.println("Saving producer "+p.getName());
+                preparedStatement.setString(1, p.getName());
+                preparedStatement.execute();
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+    }
 }

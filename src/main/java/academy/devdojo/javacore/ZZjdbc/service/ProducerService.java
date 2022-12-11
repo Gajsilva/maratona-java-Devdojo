@@ -9,6 +9,9 @@ public class ProducerService {
     public static void save(Producer producer){
         ProducerRepository.save(producer);
     }
+    public static void saveTransection(List<Producer> producers){
+        ProducerRepository.saveTransection(producers);
+    }
     public static void delete(Integer id){
       requireValidId(id);
         ProducerRepository.delete(id);

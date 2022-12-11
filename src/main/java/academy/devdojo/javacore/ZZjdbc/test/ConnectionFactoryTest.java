@@ -29,7 +29,7 @@ public class ConnectionFactoryTest {
       //  List<Producer> producers = ProducerService.finByNamePreparedStatement("Bones");
       //  System.out.println(producers);
        // ProducerService.updatePreparedStatement(producerToUpdate);
-        List<Producer> producers = ProducerService.finByNameCallableStatement("Bo");
-        System.out.println(producers);
+       // List<Producer> producers = ProducerService.finByNameCallableStatement("Bo");
+       // System.out.println(producers);
     }
 }
