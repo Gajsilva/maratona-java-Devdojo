@@ -54,6 +54,18 @@ public class ProducerRepository {
             e.printStackTrace();
         }
     }
+    public static void updatePreparedStatement (Producer producer){
+        String sql = "UPDATE anime_store . producer SET name = '%s' WHERE ( id = '%d' );"
+                .formatted(producer.getName(), producer.getId());
+        try(Connection conn= ConnectionFactory.getConnection();
+            Statement smt = conn.createStatement()) {
+            int rowsAffected = smt.executeUpdate(sql);
+            System.out.println("Update producer "+producer.getId()+" in the database, rows affected "+rowsAffected);
+        }catch (SQLException e){
+            System.out.println("Error while trying to delete producer "+ producer.getId());
+            e.printStackTrace();
+        }
+    }
     public static List<Producer> findAll(){
         System.out.println("Finding all Producers");
         String sql = "SELECT id, name FROM anime_store.producer";
@@ -119,10 +131,10 @@ public class ProducerRepository {
     }
     public static List<Producer> finByNamePreparedStatement(String name){
         System.out.println("Finding all ByName");
-        String sql = "SELECT * FROM anime_store.producer where name like ?;";
+
         List<Producer> producers = new ArrayList<>();
         try (Connection conn = ConnectionFactory.getConnection();
-             PreparedStatement ps = createdPreparedStatement(conn,sql,name);
+             PreparedStatement ps = preparedStatementFindByName(conn,name);
              ResultSet rs = ps.executeQuery();){
 
             while(rs.next()){
@@ -139,9 +151,10 @@ public class ProducerRepository {
         }
         return producers;
     }
-    private static PreparedStatement createdPreparedStatement(Connection conn, String sql, String name) throws SQLException {
+    private static PreparedStatement preparedStatementFindByName(Connection conn, String name) throws SQLException {
+        String sql = "SELECT * FROM anime_store.producer where name like ?;";
         PreparedStatement preparedStatement = conn.prepareStatement(sql);
-        preparedStatement.setString(1, name);
+        preparedStatement.setString(1, String.format("%%%s%%", name));
         return preparedStatement;
     }
     public static void showProducerMetadata(){
