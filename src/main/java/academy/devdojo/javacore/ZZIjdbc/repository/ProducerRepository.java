@@ -1,7 +1,7 @@
-package academy.devdojo.javacore.ZZjdbc.repository;
+package academy.devdojo.javacore.ZZIjdbc.repository;
 
-import academy.devdojo.javacore.ZZjdbc.conn.ConnectionFactory;
-import academy.devdojo.javacore.ZZjdbc.dominio.Producer;
+import academy.devdojo.javacore.ZZIjdbc.conn.ConnectionFactory;
+import academy.devdojo.javacore.ZZIjdbc.dominio.Producer;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package academy.devdojo.javacore.ZZjdbc.conn;
+package academy.devdojo.javacore.ZZJcrud.conn;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

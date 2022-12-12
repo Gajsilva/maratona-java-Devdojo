@@ -1,10 +1,7 @@
-package academy.devdojo.javacore.ZZjdbc.test;
+package academy.devdojo.javacore.ZZIjdbc.test;
 
 
-import academy.devdojo.javacore.ZZjdbc.dominio.Producer;
-import academy.devdojo.javacore.ZZjdbc.service.ProducerService;
-
-import java.util.List;
+import academy.devdojo.javacore.ZZIjdbc.dominio.Producer;
 
 public class ConnectionFactoryTest {
     public static void main(String[] args) {

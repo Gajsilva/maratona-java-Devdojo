@@ -1,8 +1,8 @@
-package academy.devdojo.javacore.ZZjdbc.test;
+package academy.devdojo.javacore.ZZIjdbc.test;
 
 
-import academy.devdojo.javacore.ZZjdbc.dominio.Producer;
-import academy.devdojo.javacore.ZZjdbc.service.ProducerService;
+import academy.devdojo.javacore.ZZIjdbc.dominio.Producer;
+import academy.devdojo.javacore.ZZIjdbc.service.ProducerService;
 
 import java.util.List;
 
