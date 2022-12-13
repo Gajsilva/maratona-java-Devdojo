@@ -3,10 +3,7 @@ package academy.devdojo.javacore.ZZJcrud.repository;
 import academy.devdojo.javacore.ZZJcrud.conn.ConnectionFactory;
 import academy.devdojo.javacore.ZZJcrud.dominio.Producer;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +33,22 @@ public class ProducerRepository {
         String sql = "SELECT * FROM anime_store.producer where name like ?;";
         PreparedStatement preparedStatement = conn.prepareStatement(sql);
         preparedStatement.setString(1, String.format("%%%s%%", name));
+        return preparedStatement;
+    }
+    public static void delete (int id){
+        try(Connection conn= ConnectionFactory.getConnection();
+            PreparedStatement ps = createPrepareStamenteFindyByNameDelete(conn,id)) {
+            ps.execute();
+            System.out.println("Deleted producer "+id+" in the database, rows affected "+id);
+        }catch (SQLException e){
+            System.out.println("Error while trying to delete producer "+ id);
+            e.printStackTrace();
+        }
+    }
+    private static PreparedStatement createPrepareStamenteFindyByNameDelete(Connection conn, Integer id) throws SQLException {
+        String sql = "DELETE FROM anime_store . producer WHERE ( id = ? );";
+        PreparedStatement preparedStatement = conn.prepareStatement(sql);
+        preparedStatement.setInt(1, id);
         return preparedStatement;
     }
 }
