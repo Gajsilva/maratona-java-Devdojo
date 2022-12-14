@@ -51,5 +51,20 @@ public class ProducerRepository {
         preparedStatement.setInt(1, id);
         return preparedStatement;
     }
+    public static void save(Producer producer){
+        System.out.println("Saving Producer "+producer);
+        try(Connection conn= ConnectionFactory.getConnection();
+            PreparedStatement ps = createPrepareStatementeSave(conn, producer)) {
+            ps.execute();
+        }catch (SQLException e){
+            System.out.println("Error while trying to delete producer "+ producer.getId() + e);
+        }
+    }
+    private static PreparedStatement createPrepareStatementeSave(Connection conn, Producer producer) throws SQLException {
+        String sql = "INSERT INTO anime_store . producer ( name ) VALUES (?);";
+        PreparedStatement preparedStatement = conn.prepareStatement(sql);
+        preparedStatement.setString(1, producer.getName());
+        return preparedStatement;
+    }
 }
 
