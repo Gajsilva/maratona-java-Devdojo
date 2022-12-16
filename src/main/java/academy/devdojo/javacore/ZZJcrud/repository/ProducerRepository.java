@@ -84,7 +84,7 @@ public class ProducerRepository {
         return Optional.empty();
     }
     private static PreparedStatement createdPrepareStamenteFindyById(Connection conn, Integer id) throws SQLException {
-        String sql = "SELECT * FROM anime_store.producer where name like ?;";
+        String sql = "SELECT * FROM anime_store.producer where  id = ?;";
         PreparedStatement preparedStatement = conn.prepareStatement(sql);
         preparedStatement.setInt(1,id);
         return preparedStatement;
@@ -93,7 +93,7 @@ public class ProducerRepository {
         System.out.println("Updating producer "+producer);
         try(Connection conn= ConnectionFactory.getConnection();
             PreparedStatement ps = createdPrepareStatementUpdate(conn, producer)) {
-            ps.executeUpdate();
+            ps.execute();
         }catch (SQLException e){
             System.out.println("Error while trying to delete producer "+ producer.getId());
             e.printStackTrace();
