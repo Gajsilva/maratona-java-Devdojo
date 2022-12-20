@@ -8,8 +8,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-
-
 class PersonServiceTest {
     private Person adult;
     private Person notAdult;
